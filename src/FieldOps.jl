@@ -1,5 +1,7 @@
 module FieldOps
 
-greet() = print("Hello World!")
+include("coordinate_systems.jl")
 
-end # module FieldOps
+export CoordSystem, CurvilinearCoords, Cartesian, Cylindrical, Spherical, scale_factors
+
+end

@@ -13,7 +13,7 @@ function scale_factors(coordinate_system, point)
     (h1, h2, h3)
 end
 
-function cartesian()
+function Cartesian()
     CurvilinearCoords(
         point -> 1,
         point -> 1,
@@ -21,7 +21,7 @@ function cartesian()
     )
 end
 
-function cylindrical()
+function Cylindrical()
     CurvilinearCoords(
         point -> 1,
         point -> point[1],
@@ -29,7 +29,7 @@ function cylindrical()
     )
 end
 
-function spherical()
+function Spherical()
     CurvilinearCoords(
         point -> 1,
         point -> point[1],

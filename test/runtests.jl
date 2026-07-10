@@ -1,4 +1,4 @@
 using Test
 using FieldOps
 
-@test true
+include("test_scale_factors.jl")

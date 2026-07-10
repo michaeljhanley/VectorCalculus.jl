@@ -2,3 +2,9 @@ name = "FieldOps"
 uuid = "8b35dbfe-171f-41ba-b368-f336add63a4e"
 version = "0.1.0"
 authors = ["Michael Hanley <152537546+michaeljhanley@users.noreply.github.com>"]
+
+[deps]
+ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+
+[compat]
+ForwardDiff = "1.4.1"
