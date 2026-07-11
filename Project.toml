@@ -5,6 +5,8 @@ authors = ["Michael Hanley <152537546+michaeljhanley@users.noreply.github.com>"]
 
 [deps]
 ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [compat]
 ForwardDiff = "1.4.1"
+LinearAlgebra = "1.12.0"
