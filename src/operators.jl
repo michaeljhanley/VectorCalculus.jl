@@ -1,7 +1,9 @@
+using StaticArrays
+
 function gradient(scalar_field, point, coordinate_system::CoordSystem)
     lame_factors = scale_factors(coordinate_system, point)
-    raw = ForwardDiff.gradient(scalar_field, point)
-    raw ./ lame_factors
+    raw_gradient = ForwardDiff.gradient(scalar_field, point)
+    SVector{3}(raw_gradient ./ lame_factors)
 end
 
 # Helper function for divergence(), curl(), and laplacian()
@@ -70,7 +72,7 @@ function curl(vector_field, point, coordinate_system::CoordSystem)
     c3b = partial_derivative(comp3_term_b, point, 2)
     component3 = (c3a - c3b) / (h1 * h2)
 
-    (component1, component2, component3)
+    SVector(component1, component2, component3)
 end
 
 function laplacian(scalar_field, point, coordinate_system::CoordSystem)
