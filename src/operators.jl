@@ -1,18 +1,26 @@
 using StaticArrays
 
 function gradient(scalar_field, point, coordinate_system::CoordSystem)
+    point = SVector{3}(point)
     lame_factors = scale_factors(coordinate_system, point)
     raw_gradient = ForwardDiff.gradient(scalar_field, point)
-    SVector{3}(raw_gradient ./ lame_factors)
+    raw_gradient ./ lame_factors
 end
 
 # Helper function for divergence(), curl(), and laplacian()
 function partial_derivative(scalar_field, point, coordinate_index::Integer)
-    gradient_of_function = ForwardDiff.gradient(scalar_field, point)
-    gradient_of_function[coordinate_index]
+    p1, p2, p3 = point
+    function along_axis(x)
+        shifted = coordinate_index == 1 ? SVector(x, p2, p3) :
+                  coordinate_index == 2 ? SVector(p1, x, p3) :
+                                          SVector(p1, p2, x)
+        scalar_field(shifted)
+    end
+    ForwardDiff.derivative(along_axis, point[coordinate_index])
 end
 
 function divergence(vector_field, point, coordinate_system::CoordSystem)
+    point = SVector{3}(point)
     h1, h2, h3 = scale_factors(coordinate_system, point)
 
     term1 = partial_derivative(point, 1) do q
@@ -34,6 +42,7 @@ function divergence(vector_field, point, coordinate_system::CoordSystem)
 end
 
 function curl(vector_field, point, coordinate_system::CoordSystem)
+    point = SVector{3}(point)
     h1, h2, h3 = scale_factors(coordinate_system, point)
 
     function comp1_term_a(q)
