@@ -1,3 +1,3 @@
 var documenterSearchIndex = {"docs":
-[{"category":"section","location":"#FieldOps.jl","page":"Home","text":"Documentation coming soon.","title":"FieldOps.jl"}]
+[{"category":"section","location":"","page":"Home","text":"Vector results (gradient and curl) come back in the local curvilinear basis, not Cartesian components. In spherical that's r̂, θ̂, φ̂. In cylindrical it's r̂, θ̂, ẑ.","title":"Home"},{"category":"section","location":"#Working-Example","page":"Home","text":"julia> using FieldOps\n\njulia> g(point) = point[1]\ng (generic function with 1 method)\n\njulia> gradient(g, [3.0, pi/3, 1.5], Cylindrical())\n3-element StaticArraysCore.SVector{3, Float64} with indices SOneTo(3):\n 1.0\n 0.0\n 0.0","title":"Working Example"}]
 }
