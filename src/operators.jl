@@ -1,6 +1,15 @@
 using StaticArrays
 
+function check_point_dimensions(point)
+    if length(point) != 3
+        throw(DimensionMismatch(
+            "point must have exactly 3 components, got $(length(point))"
+        ))
+    end
+end
+
 function gradient(scalar_field, point, coordinate_system::CoordSystem)
+    check_point_dimensions(point)
     point = SVector{3}(point)
     lame_factors = scale_factors(coordinate_system, point)
     raw_gradient = ForwardDiff.gradient(scalar_field, point)
@@ -20,6 +29,7 @@ function partial_derivative(scalar_field, point, coordinate_index::Integer)
 end
 
 function divergence(vector_field, point, coordinate_system::CoordSystem)
+    check_point_dimensions(point)
     point = SVector{3}(point)
     h1, h2, h3 = scale_factors(coordinate_system, point)
 
@@ -42,6 +52,7 @@ function divergence(vector_field, point, coordinate_system::CoordSystem)
 end
 
 function curl(vector_field, point, coordinate_system::CoordSystem)
+    check_point_dimensions(point)
     point = SVector{3}(point)
     h1, h2, h3 = scale_factors(coordinate_system, point)
 
@@ -85,6 +96,7 @@ function curl(vector_field, point, coordinate_system::CoordSystem)
 end
 
 function laplacian(scalar_field, point, coordinate_system::CoordSystem)
+    check_point_dimensions(point)
     gradient_field = q -> gradient(scalar_field, q, coordinate_system)
     divergence(gradient_field, point, coordinate_system)
 end
