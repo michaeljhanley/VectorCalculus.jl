@@ -3,7 +3,7 @@ Vector results (gradient and curl) come back in the local curvilinear basis, not
 ## Working Example
 
 ```julia
-julia> using FieldOps
+julia> using VectorCalculus
 
 julia> g(point) = point[1]
 g (generic function with 1 method)

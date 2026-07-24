@@ -1,4 +1,4 @@
-module FieldOps
+module VectorCalculus
 
 using ForwardDiff
 

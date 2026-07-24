@@ -1,11 +1,11 @@
 using Documenter
-using FieldOps
+using VectorCalculus
 
 makedocs(
-    sitename = "FieldOps.jl",
+    sitename = "VectorCalculus.jl",
     pages = ["Home" => "index.md"],
 )
 
 deploydocs(
-    repo = "github.com/michaeljhanley/FieldOps.jl.git",
+    repo = "github.com/michaeljhanley/VectorCalculus.jl.git",
 )

@@ -1,5 +1,5 @@
 using Test
-using FieldOps
+using VectorCalculus
 
 include("test_scale_factors.jl")
 include("test_cartesian.jl")

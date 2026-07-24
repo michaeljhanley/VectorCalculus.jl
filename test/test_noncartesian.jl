@@ -1,6 +1,6 @@
 # test/test_noncartesian.jl
 using Test
-using FieldOps
+using VectorCalculus
 using StaticArrays
 
 @testset "cylindrical (analytical)" begin

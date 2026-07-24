@@ -7,7 +7,7 @@ A Julia package for numerical computation of vector calculus operations in arbit
 In the Julia REPL:
 
 ```julia
-julia> using FieldOps
+julia> using VectorCalculus
 
 julia> f(point) = point[1]^2
 f (generic function with 1 method)
@@ -19,12 +19,12 @@ julia> laplacian(f, [3.0, pi/3, pi/4], Spherical())
 ## Installation
 
 ```julia
-] add https://github.com/michaeljhanley/FieldOps.jl.git
+] add https://github.com/michaeljhanley/VectorCalculus.jl.git
 ```
 
 ## Documentation
 
-See https://michaeljhanley.github.io/FieldOps.jl
+See https://michaeljhanley.github.io/VectorCalculus.jl
 
 ## Additional Notes
 
@@ -32,7 +32,7 @@ As of version `0.1.0-DEV`, results from this package's functions return in local
 
 ## Contributing
 
-See https://github.com/michaeljhanley/FieldOps.jl/blob/main/CONTRIBUTING.md
+See https://github.com/michaeljhanley/VectorCalculus.jl/blob/main/CONTRIBUTING.md
 
 ## License
 
