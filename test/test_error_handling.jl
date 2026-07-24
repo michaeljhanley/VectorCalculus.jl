@@ -1,3 +1,7 @@
+h1_cyl(q) = 1
+h2_cyl(q) = q[1]
+h3_cyl(q) = 1
+
 @testset "Error Handling" begin
     cyl_param(q) = SVector(q[1]*cos(q[2]), q[1]*sin(q[2]), q[3])
     good_cs = CurvilinearCoords(

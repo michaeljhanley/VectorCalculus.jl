@@ -1,4 +1,3 @@
-# test/test_noncartesian.jl
 using Test
 using VectorCalculus
 using StaticArrays
@@ -28,3 +27,6 @@ end
     div_result = divergence(F_radial, point, Spherical())
     @test isapprox(div_result, 3, atol=1e-10)
 end
+
+test_vector_identities(f, F, Cylindrical(), [2.0, π/4, 1.0])
+test_vector_identities(f, F, Spherical(), [3.0, π/3, π/4])
