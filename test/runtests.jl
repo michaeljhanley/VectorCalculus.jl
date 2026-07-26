@@ -1,8 +1,27 @@
 using Test
 using VectorCalculus
+using ForwardDiff
+using LinearAlgebra
+using StaticArrays
 
-include("test_scale_factors.jl")
-include("test_cartesian.jl")
-include("test_noncartesian.jl")
-include("test_error_handling.jl")
-include("test_user_defined.jl")
+@testset verbose = true "VectorCalculus.jl" begin
+    include("test_helpers.jl")
+    @testset "Scale factors" begin
+        include("test_scale_factors.jl")
+    end
+    @testset "Cartesian operators" begin
+        include("test_cartesian.jl")
+    end
+    @testset "Vector identities" begin
+        include("test_vector_identities.jl")
+    end
+    @testset "Non-Cartesian validation" begin
+        include("test_noncartesian.jl")
+    end
+    @testset "Error handling" begin
+        include("test_error_handling.jl")
+    end
+    @testset "User-defined systems" begin
+        include("test_user_defined.jl")
+    end
+end
