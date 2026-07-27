@@ -3,7 +3,10 @@ using VectorCalculus
 
 makedocs(
     sitename = "VectorCalculus.jl",
-    pages = ["Home" => "index.md"],
+    pages = ["Home" => "index.md",
+             "Mathematical Background" => "math.md",
+             "API Reference" => "api.md",
+             "Extending" => "extending.md",],
 )
 
 deploydocs(
