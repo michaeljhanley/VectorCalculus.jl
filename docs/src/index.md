@@ -2,7 +2,7 @@
 
 VectorCalculus.jl is a lightweight Julia package for numerically computing vector calculus functions in arbitrary orthogonal curvilinear coordinate systems. It comes with Cartesian, cylindrical, and spherical as built-in presets.
 
-This is meant for folks who use PDEs for physics and engineering, and SciML users who could use pre-made operators rather than needing to hand-roll them in functions every time they're needed.
+This package is for folks working with PDEs in physics and engineering, and for SciML users who'd rather use ready-made operators than hand-roll them each time they're needed.
 
 Note: the current version of this package returns vector-field results in the local curvilinear basis, rather than defaulting to Cartesian component outputs.
 
@@ -47,7 +47,7 @@ For more, visit [API Reference](api.md)
 
 ## Supported Coordinate Systems
 
-VectorCalculus.jl comes with `Cartesian()`, `Cylindrical()`, and `Spherical()` as coordinate systems that are ready to use out of the box. Users may also extend the package's functionality by defining custom `CurvilinearCoords` instances and `scale_factors()` functions. All coordinate systems used by this package must be orthogonal.
+VectorCalculus.jl includes `Cartesian()`, `Cylindrical()`, and `Spherical()` as built-in coordinate systems. Users may also extend the package by defining custom `CurvilinearCoords` instances and `scale_factors()` functions. All coordinate systems used by this package must be orthogonal.
 
 ## Learn More
 
