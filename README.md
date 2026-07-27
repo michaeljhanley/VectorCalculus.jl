@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/github/michaeljhanley/VectorCalculus.jl/graph/badge.svg?token=OO4RMPQG3P)](https://codecov.io/github/michaeljhanley/VectorCalculus.jl)
+
 ## Overview
 
 A Julia package for numerical computation of vector calculus operations in arbitrary orthogonal curvilinear coordinate systems. Currently implements gradient, curl, divergence, and Laplacian functions.
