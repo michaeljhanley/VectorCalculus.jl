@@ -2,37 +2,43 @@
 
 The four main operators this package implements can be reduced to formulas using Lamé scale factors ``h_1, h_2, h_3``. These coefficients describe how arc length scales with each coordinate direction in three dimensions. They let us write formulas that work for any curvilinear coordinate system.
 
-| System | (q₁, q₂, q₃) | h₁  | h₂  | h₃  |
-| --- | --- | --- | --- | --- |
-| Cartesian | (x, y, z) | 1   | 1   | 1   |
-| Cylindrical | (r, θ, z) | 1   | r   | 1   |
-| Spherical | (r, θ, φ) | 1   | r   | r sin θ |
-| User-defined | (q₁, q₂, q₃) | h₁(q) | h₂(q) | h₃(q) |
+| System       | (q₁, q₂, q₃) | h₁    | h₂    | h₃      |
+| ------------ | ------------ | ----- | ----- | ------- |
+| Cartesian    | (x, y, z)    | 1     | 1     | 1       |
+| Cylindrical  | (r, θ, z)    | 1     | r     | 1       |
+| Spherical    | (r, θ, φ)    | 1     | r     | r sin θ |
+| User-defined | (q₁, q₂, q₃) | h₁(q) | h₂(q) | h₃(q)   |
 
 ## Operator Formulas Used
 
 Gradient
+
 ```math
 \nabla f = \frac{1}{h_1}\frac{\partial f}{\partial q_1}\hat{e}_1 + \frac{1}{h_2}\frac{\partial f}{\partial q_2}\hat{e}_2 + \frac{1}{h_3}\frac{\partial f}{\partial q_3}\hat{e}_3
 ```
 
 Divergence
+
 ```math
 \nabla \cdot \mathbf{F} = \frac{1}{h_1 h_2 h_3}\left[\frac{\partial (h_2 h_3 F_1)}{\partial q_1} + \frac{\partial (h_1 h_3 F_2)}{\partial q_2} + \frac{\partial (h_1 h_2 F_3)}{\partial q_3}\right]
 ```
 
 Curl (component form)
+
 ```math
 (\nabla \times \mathbf{F})_1 = \frac{1}{h_2 h_3}\left[\frac{\partial (h_3 F_3)}{\partial q_2} - \frac{\partial (h_2 F_2)}{\partial q_3}\right]
 ```
+
 ```math
 (\nabla \times \mathbf{F})_2 = \frac{1}{h_1 h_3}\left[\frac{\partial (h_1 F_1)}{\partial q_3} - \frac{\partial (h_3 F_3)}{\partial q_1}\right]
 ```
+
 ```math
 (\nabla \times \mathbf{F})_3 = \frac{1}{h_1 h_2}\left[\frac{\partial (h_2 F_2)}{\partial q_1} - \frac{\partial (h_1 F_1)}{\partial q_2}\right]
 ```
 
 Laplacian
+
 ```math
 \Delta f = \frac{1}{h_1 h_2 h_3}\left[\frac{\partial}{\partial q_1}\left(\frac{h_2 h_3}{h_1}\frac{\partial f}{\partial q_1}\right) + \frac{\partial}{\partial q_2}\left(\frac{h_1 h_3}{h_2}\frac{\partial f}{\partial q_2}\right) + \frac{\partial}{\partial q_3}\left(\frac{h_1 h_2}{h_3}\frac{\partial f}{\partial q_3}\right)\right]
 ```
@@ -89,7 +95,7 @@ affect the result.
 
 Compare to the code:
 
-```julia
+```jldoctest
 julia> using VectorCalculus
 
 julia> f(point) = point[1]^2

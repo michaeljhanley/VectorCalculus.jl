@@ -8,6 +8,27 @@ function check_point_dimensions(point)
     end
 end
 
+"""
+    gradient(f, point, coordinate_system)
+
+Compute the gradient of scalar field `f` at `point` in `coordinate_system`,
+returned as a 3-element `SVector` in the local basis of `coordinate_system`.
+
+Throws `DimensionMismatch` if `point` doesn't have exactly 3 components.
+Errors from `scale_factors` (negative radius, non-orthogonal
+`CurvilinearCoords`) propagate unchanged.
+
+# Examples
+```jldoctest
+julia> f(point) = point[1]^2 + point[2]^2 + point[3]^2;
+
+julia> gradient(f, [1.0, 2.0, 3.0], Cartesian())
+3-element SVector{3, Float64} with indices SOneTo(3):
+ 2.0
+ 4.0
+ 6.0
+```
+"""
 function gradient(scalar_field, point, coordinate_system::CoordSystem)
     check_point_dimensions(point)
     point = SVector{3}(point)
@@ -16,7 +37,7 @@ function gradient(scalar_field, point, coordinate_system::CoordSystem)
     raw_gradient ./ lame_factors
 end
 
-# Helper function for divergence(), curl(), and laplacian()
+# Helper function, not public
 function partial_derivative(scalar_field, point, coordinate_index::Integer)
     p1, p2, p3 = point
     function along_axis(x)
@@ -28,6 +49,22 @@ function partial_derivative(scalar_field, point, coordinate_index::Integer)
     ForwardDiff.derivative(along_axis, point[coordinate_index])
 end
 
+"""
+    divergence(F, point, coordinate_system)
+
+Compute the divergence of vector field `F` at `point` in `coordinate_system`.
+
+Throws `DimensionMismatch` if `point` doesn't have exactly 3 components.
+Errors from `scale_factors` propagate unchanged.
+
+# Examples
+```jldoctest
+julia> F_radial(point) = SVector(point[1], 0.0, 0.0);
+
+julia> divergence(F_radial, [3.0, pi/3, pi/4], Spherical())
+3.0
+```
+"""
 function divergence(vector_field, point, coordinate_system::CoordSystem)
     check_point_dimensions(point)
     point = SVector{3}(point)
@@ -51,6 +88,26 @@ function divergence(vector_field, point, coordinate_system::CoordSystem)
     (term1 + term2 + term3) / (h1 * h2 * h3)
 end
 
+"""
+    curl(F, point, coordinate_system)
+
+Compute the curl of vector field `F` at `point` in `coordinate_system`,
+returned as a 3-element `SVector` in the local basis of `coordinate_system`.
+
+Throws `DimensionMismatch` if `point` doesn't have exactly 3 components.
+Errors from `scale_factors` propagate unchanged.
+
+# Examples
+```jldoctest
+julia> G(point) = SVector(-point[2], point[1], 0.0);
+
+julia> curl(G, [1.0, 2.0, 3.0], Cartesian())
+3-element SVector{3, Float64} with indices SOneTo(3):
+  0.0
+ -0.0
+  2.0
+```
+"""
 function curl(vector_field, point, coordinate_system::CoordSystem)
     check_point_dimensions(point)
     point = SVector{3}(point)
@@ -95,6 +152,22 @@ function curl(vector_field, point, coordinate_system::CoordSystem)
     SVector(component1, component2, component3)
 end
 
+"""
+    laplacian(f, point, coordinate_system)
+
+Compute the Laplacian of scalar field `f` at `point` in `coordinate_system`.
+
+Throws `DimensionMismatch` if `point` doesn't have exactly 3 components.
+Errors from `scale_factors` propagate unchanged.
+
+# Examples
+```jldoctest
+julia> f(point) = point[1]^2;
+
+julia> laplacian(f, [3.0, pi/3, pi/4], Spherical())
+6.0
+```
+"""
 function laplacian(scalar_field, point, coordinate_system::CoordSystem)
     check_point_dimensions(point)
     gradient_field = q -> gradient(scalar_field, q, coordinate_system)

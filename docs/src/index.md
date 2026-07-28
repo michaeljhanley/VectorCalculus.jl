@@ -8,7 +8,7 @@ Note: the current version of this package returns vector-field results in the lo
 
 ## Working Examples
 
-```julia
+```jldoctest
 julia> using VectorCalculus
 
 julia> f(point) = point[1]^2
@@ -18,7 +18,7 @@ julia> laplacian(f, [3.0, pi/3, pi/4], Spherical())
 6.0
 ```
 
-```julia
+```jldoctest
 julia> using VectorCalculus
 
 julia> F(point) = [point[1], 0.0, 0.0]
