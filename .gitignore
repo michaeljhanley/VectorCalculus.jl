@@ -1,5 +1,6 @@
 # Julia
 /Manifest.toml
+/test/Manifest.toml
 /docs/build/
 
 # OS/editor cruft
