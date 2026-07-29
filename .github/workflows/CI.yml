@@ -8,10 +8,12 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.julia-version == 'nightly' }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        julia-version: ['1']
+        julia-version: ['1.10', '1', 'nightly']
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v3
@@ -21,9 +23,9 @@ jobs:
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-latest' && matrix.julia-version == '1'
       - uses: codecov/codecov-action@v5
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-latest' && matrix.julia-version == '1'
         with:
           files: lcov.info
           token: ${{ secrets.CODECOV_TOKEN }}
