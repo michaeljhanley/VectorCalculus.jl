@@ -24,4 +24,10 @@ using StaticArrays
     @testset "User-defined systems" begin
         include("test_user_defined.jl")
     end
+    @testset "Code quality (Aqua.jl)" begin
+        include("test_quality.jl")
+    end
+    @testset "Code quality (JET.jl)" begin
+        include("test_jet.jl")
+    end
 end
