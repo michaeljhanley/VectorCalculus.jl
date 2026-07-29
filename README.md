@@ -10,13 +10,13 @@ In the Julia REPL:
 
 ```julia
 julia> using VectorCalculus
+
 julia> f(point) = point[1]^2
 f (generic function with 1 method)
+
 julia> laplacian(f, [3.0, pi/3, pi/4], Spherical())
 6.0
-```
 
-```julia
 julia> gradient(f, [2.0, pi/4, 1.0], Cylindrical())
 3-element SVector{3, Float64} with indices SOneTo(3):
  4.0
