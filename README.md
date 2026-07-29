@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/github/michaeljhanley/VectorCalculus.jl/graph/badge.svg?token=OO4RMPQG3P)](https://codecov.io/github/michaeljhanley/VectorCalculus.jl)
+[![codecov](https://codecov.io/github/michaeljhanley/VectorCalculus.jl/graph/badge.svg?token=OO4RMPQG3P)](https://codecov.io/github/michaeljhanley/VectorCalculus.jl) [![CI](https://github.com/michaeljhanley/VectorCalculus.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/michaeljhanley/VectorCalculus.jl/actions/workflows/CI.yml) [![Documentation](https://github.com/michaeljhanley/VectorCalculus.jl/actions/workflows/Documentation.yml/badge.svg)](https://github.com/michaeljhanley/VectorCalculus.jl/actions/workflows/Documentation.yml) ![GitHub License](https://img.shields.io/github/license/:user/:repo) 
 
 ## Overview
 
