@@ -46,7 +46,7 @@ I'll respond as soon as I can. This is a one-person project, so a reply might ta
 
 VectorCalculus.jl is pre-registration and pre-1.0.0. A few things follow from that:
 
-- The public API can still change. The coordinate-system type architecture is mid-refactor: `Cartesian`, `Cylindrical`, and `Spherical` are moving from constructor functions to named struct types. If you're building against the current internals, expect some churn until 0.1.0 ships.
+- The public API can still change. The coordinate-system type architecture is mid-refactor: `Cartesian`, `Cylindrical`, and `Spherical` are moving from constructor functions to named struct types. If you're building against the current internals, expect some churn until 1.0.0 ships.
 - Scope is intentionally narrow for now. The package is numerical-first: it computes gradient, divergence, curl, and Laplacian via ForwardDiff.jl, in Cartesian, cylindrical, spherical, and user-defined orthogonal coordinate systems. A symbolic backend via Symbolics.jl might arrive as an optional extension much later, but it isn't a core dependency, so PRs adding SymPy or a required symbolic path are out of scope.
 - There's no project team. One maintainer triages issues and PRs, so labeling and response times are informal.
 

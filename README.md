@@ -24,7 +24,7 @@ julia> gradient(f, [2.0, pi/4, 1.0], Cylindrical())
  0.0
 ```
 
-As of version `0.1.0-DEV`, vector-valued results from this package's return in the local curvilinear basis of the supplied coordinate system, not just Cartesian components.
+As of version `0.1.0`, vector-valued results from this package's return in the local curvilinear basis of the supplied coordinate system, not just Cartesian components.
 
 ## Installation
 ```julia
