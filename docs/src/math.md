@@ -51,49 +51,15 @@ For a full derivation behind the orthogonality assumption, see [Del in cylindric
 and [Curvilinear coordinates](https://en.wikipedia.org/wiki/Curvilinear_coordinates)
 on Wikipedia.
 
-## Output Basis
-
-The current version of this package returns vector-field results in the local curvilinear basis. Visit [Home](index.md) for more info.
-
 ## Example Formula to Code
 
-For `f(point) = point[1]^2`, i.e. ``f(r,\theta,\varphi) = r^2``, at
-``(r,\theta,\varphi) = (3, \pi/3, \pi/4)``:
+For ``f(r,\theta,\varphi) = r^2`` in spherical coordinates (``h_1 = 1, h_2 = r, h_3 = r\sin\theta``), only the ``r``-derivative term in the Laplacian survives:
 
 ```math
-\Delta f = \frac{1}{h_1 h_2 h_3}\left[
-\frac{\partial}{\partial q_1}\!\left(\frac{h_2 h_3}{h_1}\frac{\partial f}{\partial q_1}\right)
-+ \frac{\partial}{\partial q_2}\!\left(\frac{h_1 h_3}{h_2}\frac{\partial f}{\partial q_2}\right)
-+ \frac{\partial}{\partial q_3}\!\left(\frac{h_1 h_2}{h_3}\frac{\partial f}{\partial q_3}\right)
-\right]
+\Delta f = \frac{1}{r^2\sin\theta} \frac{\partial}{\partial r}\left(r^2\sin\theta \cdot 2r\right) = \frac{6r^2\sin\theta}{r^2\sin\theta} = 6
 ```
 
-#### Scale factors (spherical)
-
-``h_1 = 1,\ h_2 = r,\ h_3 = r\sin\theta``
-
-#### Partials
-
-``\partial f/\partial r = 2r``; ``\partial f/\partial\theta = \partial f/\partial\varphi = 0``.
-Only the ``r``-term stays. Assemble the surviving term:
-
-```math
-\frac{h_2 h_3}{h_1} = r^2\sin\theta
-\qquad\Rightarrow\qquad
-\frac{\partial}{\partial r}\left(r^2\sin\theta \cdot 2r\right) = 6r^2\sin\theta
-```
-
-Divide by ``h_1h_2h_3 = r^2\sin\theta``:
-
-```math
-\Delta f = \frac{6r^2\sin\theta}{r^2\sin\theta} = 6
-```
-
-The ``r^2\sin\theta`` cancels exactly. ``\Delta(r^2) = 6`` holds at *every* point
-in spherical coordinates, which is why the specific point chosen here doesn't
-affect the result.
-
-Compare to the code:
+The analytical result ``\Delta(r^2) = 6`` holds at every point in spherical coordinates and matches the numerical package output:
 
 ```jldoctest
 julia> using VectorCalculus
@@ -104,8 +70,6 @@ f (generic function with 1 method)
 julia> laplacian(f, [3.0, pi/3, pi/4], Spherical())
 6.0
 ```
-
-The analytical and numerical results match exactly.
 
 ## Learn More
 
