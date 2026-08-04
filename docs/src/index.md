@@ -31,7 +31,7 @@ julia> divergence(F, [2.0, pi/4, 1.0], Cylindrical())
 ## Installation
 
 ```julia
-] add https://github.com/michaeljhanley/VectorCalculus.jl.git
+] add VectorCalculus
 ```
 
 ## API Summary
