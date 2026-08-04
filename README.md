@@ -28,7 +28,7 @@ As of version `0.1.0`, vector-valued results from this package's return in the l
 
 ## Installation
 ```julia
-] add https://github.com/michaeljhanley/VectorCalculus.jl.git
+] add VectorCalculus
 ```
 ## Documentation
 
