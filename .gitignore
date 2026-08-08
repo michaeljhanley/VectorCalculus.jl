@@ -6,3 +6,7 @@
 # OS/editor cruft
 .DS_Store
 .vscode/
+
+# Local benchmarking (not tracked)
+benchmark/
+BENCHMARKS.md
